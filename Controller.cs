@@ -1,19 +1,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LowLevelInput.Hooks;
 using LowLevelInput.WindowsHooks;
-using System.Configuration;
 
 namespace SimPranks
 {
-
     internal class Controller : IDisposable
     {
         private InputManager InputManager { get; set; }
@@ -30,40 +26,11 @@ namespace SimPranks
             foreach (var model in PrankModels)
             {
                 Filter += model.FilterEventHandler;
-                model.ErrorSubscriber += LogError;
+                model.ErrorSubscriber += LogModel.LogError;
             }
-
             SpecialComboTask = OpenApplicationWindow;
             SubscribeToAPIInputEvents();
             OpenApplicationWindow();
-        }
-
-        private void LogError(object sender, ErrorEventArgs e)
-        {
-            // Because the application is supposed to work invisibly, we are not showing the error to the user, and instead
-            // write it to disk
-            var output = new StringBuilder();
-            var timeStamp = DateTime.UtcNow;
-            output.AppendLine(
-                $"{timeStamp.ToShortDateString()} {timeStamp.ToShortTimeString()} Error: {e.Description}");
-            if (e.Exception == null)
-            {
-                output.AppendLine("No exception reported.");
-            }
-            else
-            {
-                var ex = e.Exception;
-                while (ex != null)
-                {
-                    output.AppendLine(ex.GetType().FullName);
-                    output.AppendLine("Message : " + ex.Message);
-                    output.AppendLine("StackTrace : " + ex.StackTrace);
-                    ex = ex.InnerException;
-                }
-            }
-            var logFilename = ConfigurationManager.AppSettings["LogFilename"] ?? "ErrorsLog.txt";
-            var logFilePath = Path.Combine(Environment.CurrentDirectory, logFilename);
-            File.AppendAllText(logFilePath, output.ToString());
         }
 
         private void SubscribeToAPIInputEvents()

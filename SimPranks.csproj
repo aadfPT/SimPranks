@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ErrorEventArgs.cs" />
+    <Compile Include="LogModel.cs" />
     <Compile Include="ViewModels\ApplicationOptionViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\View.cs">
