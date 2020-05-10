@@ -14,6 +14,7 @@ namespace SimPranks
     /// </summary>
     internal abstract class PrankModel : IComparable<PrankModel>
     {
+        internal event EventHandler<ErrorEventArgs> ErrorSubscriber;
         internal abstract string Description { get; }
 
         internal bool Active { get; set; } = true;
@@ -35,23 +36,25 @@ namespace SimPranks
             {
                 return (key, state) =>
                 {
-                    if (!Active
-                        || ExecutingPayload)
-                    {
-                        return false;
-                    }
-
+                    var result = false;
                     try
                     {
-                        ExecutingPayload = true;
-                        var result = FilterPayload(key, state);
-                        ExecutingPayload = false;
-                        return result;
+                        if (Active && !ExecutingPayload)
+                        {
+                            ExecutingPayload = true;
+                            result = FilterPayload(key, state);
+                        }
                     }
-                    catch (Exception)
+                    catch (Exception x)
                     {
-                        return false;
+                        var args = new ErrorEventArgs(x, x.Message);
+                        ErrorSubscriber?.Invoke(this, args);
                     }
+                    finally
+                    {
+                        ExecutingPayload = false;
+                    }
+                    return result;
                 };
             }
         }

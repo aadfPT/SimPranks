@@ -46,6 +46,7 @@
       <HintPath>packages\LowLevelInput.Net.1.36.6\lib\LowLevelInput.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -60,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorEventArgs.cs" />
     <Compile Include="ViewModels\ApplicationOptionViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\View.cs">
