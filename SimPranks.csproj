@@ -64,7 +64,7 @@
     <Compile Include="ErrorEventArgs.cs" />
     <Compile Include="LogModel.cs" />
     <Compile Include="ViewModels\ApplicationOptionViewModel.cs" />
-    <Compile Include="ViewModels\ISettingsViewModel.cs" />
+    <Compile Include="Interfaces\ISettings.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\View.cs">
       <SubType>Form</SubType>

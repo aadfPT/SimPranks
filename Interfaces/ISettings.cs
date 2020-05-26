@@ -2,7 +2,7 @@ namespace SimPranks
 {
     using System.Collections.Generic;
 
-    internal interface ISettingsViewModel
+    internal interface ISettings
     {
         IEnumerable<ApplicationOptionViewModel> Options { get; set; }
     }
