@@ -10,6 +10,6 @@ namespace SimPranks
             Options = pranks.Select(p => new ApplicationOptionViewModel(p.Active, p.Description)).ToList();
         }
 
-        public IEnumerable<ApplicationOptionViewModel> Options { get; set; }
+        public IEnumerable<IApplicationOption> Options { get; set; }
     }
 }

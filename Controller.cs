@@ -72,17 +72,18 @@ namespace SimPranks
         private void HideAndApply(object sender, EventArgs e)
         {
             var view = (View)sender;
-            var selectedPranks = view.GetCheckedPranks();
+            var selectedPranks = view.GetCheckedOptions();
             UpdatePranksStatus(selectedPranks);
             view.DialogResult = DialogResult.Ignore;
             view.Close();
         }
 
-        private void UpdatePranksStatus(CheckedListBox.CheckedItemCollection selectedPranks)
+        private void UpdatePranksStatus(IEnumerable<IApplicationOption> selectedPranks)
         {
+            var descriptions = selectedPranks.Select(sp => sp.Description);
             PrankModels.ForEach(option =>
             {
-                option.Active = selectedPranks.Contains(option.Description);
+                option.Active = descriptions.Contains(option.Description);
             });
         }
 

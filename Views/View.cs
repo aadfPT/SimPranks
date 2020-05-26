@@ -50,9 +50,14 @@ namespace SimPranks
             UserClickedHideAndApply?.Invoke(this, e);
         }
 
-        public CheckedListBox.CheckedItemCollection GetCheckedPranks()
+        public IEnumerable<IApplicationOption> GetCheckedOptions()
         {
-            return chkLstPranks.CheckedItems;
+            var options = new List<IApplicationOption>();
+            foreach (var chkLstPrank in chkLstPranks.CheckedItems)
+            {
+                options.Add(new ApplicationOptionViewModel(true, chkLstPrank.ToString()));
+            }
+            return options;
         }
     }
 }
