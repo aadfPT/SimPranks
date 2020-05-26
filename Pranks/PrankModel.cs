@@ -18,7 +18,7 @@ namespace SimPranks
         internal abstract string Description { get; }
 
         internal bool Active { get; set; } = true;
-        internal static bool ExecutingPayload { get; set; }
+        protected static bool ExecutingPayload { get; set; }
 
         protected static readonly InputSimulator InputSimulator = new InputSimulator();
 
