@@ -14,13 +14,13 @@ namespace SimPranks
     {
         internal event EventHandler UserClickedHideAndApply;
         internal event EventHandler UserClickedClose;
-        internal View(SettingsViewModel viewModel)
+        internal View(ISettingsViewModel viewModel)
         {
             SettingsViewModel = viewModel;
             InitializeComponent();
         }
 
-        internal SettingsViewModel SettingsViewModel { get; }
+        internal ISettingsViewModel SettingsViewModel { get; }
 
         protected override void OnLoad(EventArgs e)
         {

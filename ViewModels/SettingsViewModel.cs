@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace SimPranks
 {
-    internal class SettingsViewModel
+    internal class SettingsViewModel : ISettingsViewModel
     {
         internal SettingsViewModel(IEnumerable<PrankModel> pranks)
         {
             Options = pranks.Select(p => new ApplicationOptionViewModel(p.Active, p.Description)).ToList();
         }
 
-        internal List<ApplicationOptionViewModel> Options { get; set; }
+        public IEnumerable<ApplicationOptionViewModel> Options { get; set; }
     }
 }
