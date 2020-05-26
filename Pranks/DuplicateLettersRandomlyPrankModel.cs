@@ -15,6 +15,8 @@ namespace SimPranks
 
         protected override bool FilterPayload(VirtualKeyCode key, KeyState state)
         {
+            if (state != KeyState.Pressed || key == VirtualKeyCode.Invalid) return false;
+            
             if (key < VirtualKeyCode.A || key > VirtualKeyCode.Z) return false;
             if (RandomGenerator.Next(0, 3) != 0) return false;
             InputSimulator.Keyboard.KeyPress((WindowsInput.Native.VirtualKeyCode)key);
