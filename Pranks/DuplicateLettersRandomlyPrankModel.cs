@@ -11,7 +11,7 @@ namespace SimPranks
     internal class DuplicateLettersRandomlyPrankModel : PrankModel
     {
         private Random RandomGenerator { get; } = new Random();
-        internal override string Description => "Duplicates letters at random.";
+        public override string Description => "Duplicates letters at random.";
 
         protected override bool FilterPayload(VirtualKeyCode key, KeyState state)
         {

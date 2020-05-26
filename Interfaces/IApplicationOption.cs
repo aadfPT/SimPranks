@@ -2,7 +2,7 @@ namespace SimPranks
 {
     internal interface IApplicationOption
     {
-        bool Active { get; set; }
-        string Description { get; set; }
+        bool Active { get; }
+        string Description { get; }
     }
 }

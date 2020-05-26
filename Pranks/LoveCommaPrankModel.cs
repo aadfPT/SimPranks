@@ -5,7 +5,7 @@
 
     internal class LoveCommaPrankModel : PrankModel
     {
-        internal override string Description => "Replaces commas with hearths.";
+        public override string Description => "Replaces commas with hearths.";
 
         protected override bool FilterPayload(VirtualKeyCode key, KeyState state)
         {

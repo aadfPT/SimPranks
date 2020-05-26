@@ -5,7 +5,7 @@ namespace SimPranks
 {
     internal class SettingsViewModel : ISettings
     {
-        internal SettingsViewModel(IEnumerable<PrankModel> pranks)
+        internal SettingsViewModel(IEnumerable<IApplicationOption> pranks)
         {
             Options = pranks.Select(p => new ApplicationOptionViewModel(p.Active, p.Description)).ToList();
         }

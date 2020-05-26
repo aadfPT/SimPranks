@@ -71,7 +71,9 @@ namespace SimPranks
 
         private void HideAndApply(object sender, EventArgs e)
         {
-            var view = (View)sender;
+            var view = sender as View;
+            if (view == null) return;
+
             var selectedPranks = view.GetCheckedOptions();
             UpdatePranksStatus(selectedPranks);
             view.DialogResult = DialogResult.Ignore;

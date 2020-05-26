@@ -12,12 +12,12 @@ namespace SimPranks
     /// <summary>
     /// Inherit this class to set up new Pranks.
     /// </summary>
-    internal abstract class PrankModel : IComparable<PrankModel>
+    internal abstract class PrankModel : IComparable<PrankModel>, IApplicationOption
     {
         internal event EventHandler<ErrorEventArgs> ErrorSubscriber;
-        internal abstract string Description { get; }
+        public abstract string Description { get; }
 
-        internal bool Active { get; set; } = true;
+        public bool Active { get; set; } = true;
         protected static bool ExecutingPayload { get; set; }
 
         protected static readonly InputSimulator InputSimulator = new InputSimulator();

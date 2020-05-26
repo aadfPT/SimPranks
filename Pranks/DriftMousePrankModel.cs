@@ -8,7 +8,7 @@
     {
         private Random RandomGenerator { get; } = new Random();
 
-        internal override string Description => "Drifts the mouse at random.";
+        public override string Description => "Drifts the mouse at random.";
 
         protected override bool FilterPayload(VirtualKeyCode key, KeyState state)
         {
