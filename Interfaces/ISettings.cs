@@ -4,6 +4,6 @@ namespace SimPranks
 
     internal interface ISettings
     {
-        IEnumerable<ApplicationOptionViewModel> Options { get; set; }
+        IEnumerable<IApplicationOption> Options { get; set; }
     }
 }

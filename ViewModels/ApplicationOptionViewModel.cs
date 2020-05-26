@@ -1,9 +1,9 @@
 namespace SimPranks
 {
-    internal class ApplicationOptionViewModel
+    internal class ApplicationOptionViewModel : IApplicationOption
     {
-        internal bool Active { get; set; }
-        internal string Description { get; set; }
+        public bool Active { get; set; }
+        public string Description { get; set; }
 
         internal ApplicationOptionViewModel(bool active, string description)
         {

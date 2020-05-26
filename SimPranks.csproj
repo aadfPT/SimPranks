@@ -65,6 +65,7 @@
     <Compile Include="LogModel.cs" />
     <Compile Include="ViewModels\ApplicationOptionViewModel.cs" />
     <Compile Include="Interfaces\ISettings.cs" />
+    <Compile Include="Interfaces\IApplicationOption.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\View.cs">
       <SubType>Form</SubType>
