@@ -52,12 +52,10 @@ namespace SimPranks
 
         public IEnumerable<IApplicationOption> GetCheckedOptions()
         {
-            var options = new List<IApplicationOption>();
-            foreach (var chkLstPrank in chkLstPranks.CheckedItems)
-            {
-                options.Add(new ApplicationOptionViewModel(true, chkLstPrank.ToString()));
-            }
-            return options;
+            return chkLstPranks.CheckedItems
+                .Cast<IApplicationOption>()
+                .Select(i => new ApplicationOptionViewModel(true, i.ToString()))
+                .ToList();
         }
     }
 }
